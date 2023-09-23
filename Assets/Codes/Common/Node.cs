@@ -19,14 +19,19 @@ public interface ILogicNode
     void OnUpdateLogic(float deltaTime);
 
     ILogicNode Parent { get; set; }
-    List<ILogicNode> Children { get; set; }
+    List<ILogicNode> Children { get; }
 }
 
 
 public class MonoLogicNode : MonoBehaviour, ILogicNode
 {
+
+
     public ILogicNode Parent { get; set; }
-    public List<ILogicNode> Children { get; set; }
+    public List<ILogicNode> Children => children;
+
+
+    protected List<ILogicNode> children = new List<ILogicNode>();
 
     public void Attach(ILogicNode node)
     {
@@ -87,8 +92,9 @@ public class MonoLogicNode : MonoBehaviour, ILogicNode
 public class LogicNode : ILogicNode
 {
     public ILogicNode Parent { get; set; }
-    public List<ILogicNode> Children { get; set; }
+    public List<ILogicNode> Children => children;
 
+    protected List<ILogicNode> children = new List<ILogicNode>();
     public void Attach(ILogicNode node)
     {
         if (node == null)

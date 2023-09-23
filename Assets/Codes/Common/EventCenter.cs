@@ -1,5 +1,4 @@
-﻿using Assets.Codes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +21,11 @@ public class EventCenter : LogicNode
         }
     }
 
+    public EventCenter()
+    {
+        instance = this;
+    }
+
     private Dictionary<int, List<ListenFunc>> listensDic = new Dictionary<int, List<ListenFunc>>();
 
     public delegate void ListenFunc(BaseEvent e);
@@ -34,7 +38,11 @@ public class EventCenter : LogicNode
         AddListen(baseEvent.EventKey, func);
     }
 
-
+    /// <summary>
+    /// 添加监听
+    /// </summary>
+    /// <param name="inEventKey"></param>
+    /// <param name="func">要做事的方法，感觉用反射更优雅吧，但是性能会是问题</param>
     public void AddListen(int inEventKey, ListenFunc func)
     {
         if (!listensDic.TryGetValue(inEventKey, out List<ListenFunc> funcs))
