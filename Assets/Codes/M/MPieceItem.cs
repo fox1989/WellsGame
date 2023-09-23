@@ -57,6 +57,12 @@ public class MPieceItem : MonoBehaviour
     }
 
 
+    public void SetColor(Color color)
+    {
+        image.color = color;
+        
+    }
+
 
 
 }

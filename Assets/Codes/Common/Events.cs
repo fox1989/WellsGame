@@ -73,6 +73,8 @@ public class Events_SyncPiece : BaseEvent
     public PieceType pieceType;
 
     public Vector2Int coord;
+
+    public Color color = Color.white;
 }
 
 

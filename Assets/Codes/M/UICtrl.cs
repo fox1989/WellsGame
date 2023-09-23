@@ -104,7 +104,7 @@ public class UICtrl : MonoLogicNode
     {
         if (quitPanel)
         {
-            quitPanel.SetActive(false);
+            quitPanel.SetActive(true);
         }
 
     }
